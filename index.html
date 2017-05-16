@@ -1,0 +1,25 @@
+<html ng-app ="myApp">
+<head>
+	<script src="angular.js"></script>
+	<script src="main.js"></script>
+</head>
+	<body>
+		<h1>TODO APP</h1>
+		<div ng-controller="MainCtrl as ctrl">
+			<p>Add a Todo:</p>
+			<input ng-model = "ctrl.newTask"type = "text"></input>
+			<p><button ng-click = "ctrl.addNewTask()">Add</button></p>
+			<p>Your Todos are:</p>
+			<p>
+				<button ng-hide ="ctrl.editMode" ng-click = "ctrl.editTask()">Edit</button>
+				<button ng-show = "ctrl.editMode" ng-click = "ctrl.doneTask()">Done</button>
+			</p>
+			<ol>
+				<li ng-repeat="i in ctrl.task track by $index"><span ng-hide="ctrl.editMode" ng-bind="i"></span>
+					<input ng-model = "i" ng-show = "ctrl.editMode" type = "text"></input>
+					<button ng-hide ="!ctrl.editMode" ng-click="ctrl.removeTask($index)">Delete</button>
+				</li>
+			</ol>
+		</div>
+	</body>
+</html>
