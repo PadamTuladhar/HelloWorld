@@ -9,8 +9,12 @@ function Main(){
 	this.editMode = false;
 
 	this.addNewTask = function(){
-		this.task.push(this.newTask);
-		this.newTask = "";
+		if(this.newTask == null)
+			console.log("Enter the task to be added.");
+		else{
+			this.task.push(this.newTask);
+			this.newTask = "";	
+		}
 	}
 	this.removeTask = function(index){
 		this.task.splice(index,1);
